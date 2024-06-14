@@ -15,6 +15,7 @@ const participantSchema = new mongoose.Schema(
         },
         message: (props) => `${props.value} is not a valid mobile number!`,
       },
+      unique: true,
     },
   },
   { timestamps: true }
