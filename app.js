@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const participantRoutes = require("./routes/participants");
+const testRoute = require("./routes/index");
 const errorHandler = require("./middlewares/errorHandler");
 
 // Load environment variables
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static("../frontend"));
 
 // Routes
+app.use("/", testRoute);
 app.use("/api/participants", participantRoutes);
 
 // Error handling middleware

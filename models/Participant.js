@@ -1,21 +1,24 @@
 const mongoose = require("mongoose");
 
-const participantSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  mobile: {
-    type: String,
-    required: true,
-    validate: {
-      validator: function (v) {
-        return /\d{10}/.test(v);
+const participantSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    mobile: {
+      type: String,
+      required: true,
+      validate: {
+        validator: function (v) {
+          return /\d{10}/.test(v);
+        },
+        message: (props) => `${props.value} is not a valid mobile number!`,
       },
-      message: (props) => `${props.value} is not a valid mobile number!`,
     },
   },
-});
+  { timestamps: true }
+);
 
 const Participant = mongoose.model("Participant", participantSchema);
 
